@@ -1,0 +1,18 @@
+.filter__label {
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+ }
+ 
+ .filter__input {
+     font-size: 20px;
+     font-weight: 500;
+     display: flex;
+     padding: 12px;
+     margin-top: 20px;
+     margin-bottom: 20px; 
+     border-radius: 10px;
+     border: 2px solid orange;
+ }
