@@ -2,12 +2,22 @@ import css from './App.module.css'
 import Form from "../Form/Form";
 import Contacts from "../Contacts/Contacts";
 import Filter from "../Filter/Filter";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/operations';
 
 const App = () => {
 
-  const contacts = useSelector(state => state.contacts.contacts);
-  // console.log(contacts);
+  const contacts = useSelector(selectContacts);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+  
 
     return (
     <div className={css.container}>
@@ -22,6 +32,7 @@ const App = () => {
      ) : (
      <p className={css.contacts__text}>No available contacts</p>
      )}  
+     {isLoading && !error && <p>Loading...</p>}
     </div>
     );
   };

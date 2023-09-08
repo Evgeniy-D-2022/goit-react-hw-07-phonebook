@@ -1,14 +1,13 @@
-// import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import css from './Form.module.css';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from '../../redux/operations';
 import Notiflix from "notiflix";
+import { selectContacts } from 'redux/selectors';
 
 
 const Form = () => {
   
-  const contacts = useSelector(state => state.contacts.contacts);
-
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch()
 
   const handleSubmit = e => {
@@ -29,7 +28,6 @@ const Form = () => {
     e.target.reset()
   };
 
-  
   return (
         <>
          <form className={css.form} onSubmit={handleSubmit}>
